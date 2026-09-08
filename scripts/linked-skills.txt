@@ -1,0 +1,9 @@
+# Skills linked into ~/.claude/skills and ~/.agents/skills by link-skills.sh.
+# One skill name per line; blank lines and lines starting with # are ignored.
+domain-modeling
+grill-with-docs
+to-spec
+grilling
+grill-me
+handoff
+teach
