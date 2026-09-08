@@ -9,17 +9,17 @@
 
 ## Language
 
-**Order**:
+**Module**:
 {A one or two sentence description of the term}
-_Avoid_: Purchase, transaction
+_Avoid_: block, design unit ("Python module", written in full, when the import unit is meant)
 
-**Invoice**:
-A request for payment sent to a customer after delivery.
-_Avoid_: Bill, payment request
+**Net**:
+A named electrical connection between Ports.
+_Avoid_: wire, signal
 
-**Customer**:
-A person or organization that places orders.
-_Avoid_: Client, buyer, account
+**Instance**:
+A single placement of a Module inside a parent Module.
+_Avoid_: cell, occurrence
 ```
 
 ## Rules
@@ -40,15 +40,15 @@ _Avoid_: Client, buyer, account
 
 ## Contexts
 
-- [Ordering](./src/ordering/CONTEXT.md): receives and tracks customer orders
-- [Billing](./src/billing/CONTEXT.md): generates invoices and processes payments
-- [Fulfillment](./src/fulfillment/CONTEXT.md): manages warehouse picking and shipping
+- [Parsing](./src/parsing/CONTEXT.md): reads source RTL and specs into the design database
+- [Connecting](./src/connecting/CONTEXT.md): builds the Module hierarchy and wires Nets between Instances
+- [Rendering](./src/rendering/CONTEXT.md): emits generated RTL from the connected design
 
 ## Relationships
 
-- **Ordering → Fulfillment**: Ordering emits `OrderPlaced` events; Fulfillment consumes them to start picking
-- **Fulfillment → Billing**: Fulfillment emits `ShipmentDispatched` events; Billing consumes them to generate invoices
-- **Ordering ↔ Billing**: Shared types for `CustomerId` and `Money`
+- **Parsing → Connecting**: Parsing populates the design database; Connecting consumes it to build the hierarchy
+- **Connecting → Rendering**: Connecting produces the resolved hierarchy; Rendering emits it as Verilog
+- **Parsing ↔ Rendering**: Shared types for `ModuleRef` and `PortDirection`
 ```
 
 The skill infers which structure applies:

@@ -16,8 +16,8 @@ Most repos have a single context:
 ├── CONTEXT.md
 ├── docs/
 │   └── adr/
-│       ├── 0001-event-sourced-orders.md
-│       └── 0002-postgres-for-write-model.md
+│       ├── 0001-design-database-as-source-of-truth.md
+│       └── 0002-render-verilog-through-templates.md
 └── src/
 ```
 
@@ -29,10 +29,10 @@ If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The ma
 ├── docs/
 │   └── adr/                          ← system-wide decisions
 ├── src/
-│   ├── ordering/
+│   ├── parsing/
 │   │   ├── CONTEXT.md
 │   │   └── docs/adr/                 ← context-specific decisions
-│   └── billing/
+│   └── connecting/
 │       ├── CONTEXT.md
 │       └── docs/adr/
 ```
@@ -47,7 +47,9 @@ When the user uses a term that conflicts with the existing language in `CONTEXT.
 
 ### Sharpen fuzzy language
 
-When the user uses vague or overloaded terms, propose a precise canonical term. "You're saying 'account': do you mean the Customer or the User? Those are different things."
+When the user uses vague or overloaded terms, propose a precise canonical term. "You're saying 'block': do you mean a Module or an Instance? Those are different things."
+
+When a domain term collides with a keyword of an implementation or target language (Python and Verilog/SystemVerilog between them claim module, package, interface, port, parameter, process, signal, and generate), define the domain sense explicitly and name the collision in the glossary entry. Never let the unqualified word carry two senses in one repo: "In this glossary, **Module** is the Verilog design unit; when the Python import unit is meant, write 'Python module' in full."
 
 ### Discuss concrete scenarios
 
@@ -55,7 +57,7 @@ When domain relationships are being discussed, stress-test them with specific sc
 
 ### Cross-reference with code
 
-When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible. Which is right?"
+When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code renders every Port with an explicit direction, but you just said direction can be inferred at connect time. Which is right?"
 
 ### Update CONTEXT.md inline
 
