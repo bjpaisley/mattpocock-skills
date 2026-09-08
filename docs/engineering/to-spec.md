@@ -53,7 +53,7 @@ Mostly for the agent, and it reads that way: complete, dense, reference-heavy. T
 **Do I keep the spec frozen once tickets start, or let the agent rewrite it?**
 Nothing keeps it in sync, so in practice it is a snapshot of what you knew at that moment, and it goes stale the first time implementation teaches you something. Treat it as throwaway once the work ships. The artifacts meant to outlive it are your `CONTEXT.md` and your ADRs; if something learned during implementation deserves to last, it belongs there, not in an edited spec.
 
-**My work is a refactor or a module boundary, not a feature. Does the template fit?**
+**My work is a refactor or a capsule boundary, not a feature. Does the template fit?**
 Less well, and this is a known limitation. The template leans hard on user stories, which is the wrong shape for architectural work: you end up writing stories nobody asked for around decisions that are really about interfaces and invariants. Lean on the implementation-decisions and testing-decisions sections instead, and let the durable architectural calls land as ADRs via [grill-with-docs](https://aihero.dev/skills-grill-with-docs) rather than trying to make the spec carry them.
 
 **Will it check the tracker for related work, or cite the ADRs it's respecting?**

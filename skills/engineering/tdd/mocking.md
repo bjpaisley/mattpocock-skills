@@ -9,7 +9,7 @@ Mock at **system boundaries** only:
 
 Don't mock:
 
-- Your own classes/modules
+- Your own classes/capsules
 - Internal collaborators
 - Anything you control
 

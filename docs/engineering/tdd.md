@@ -22,7 +22,7 @@ That last row is a real hole, not a stylistic preference. The skill decides *whe
 
 ## Prerequisites
 
-[codebase-design](https://aihero.dev/skills-codebase-design) needs to be installed. `tdd` used to carry its own deep-module and interface-design notes; in v1.0 those were deleted in favour of the shared skill, and `tdd` now leans on it for interface-design vocabulary. Nothing else; the skill is [stateless](https://www.aihero.dev/ai-coding-dictionary/stateless) and writes no files of its own.
+[codebase-design](https://aihero.dev/skills-codebase-design) needs to be installed. `tdd` used to carry its own deep-capsule and interface-design notes; in v1.0 those were deleted in favour of the shared skill, and `tdd` now leans on it for interface-design vocabulary. Nothing else; the skill is [stateless](https://www.aihero.dev/ai-coding-dictionary/stateless) and writes no files of its own.
 
 ## The loop, and the seam it runs at
 
@@ -42,7 +42,7 @@ The three anti-patterns it is written to prevent:
 | Tautological | The expected value is computed the way the code computes it, so the test passes by construction. Expected values have to come from somewhere else: a known-good literal, a worked example, the spec. |
 | Horizontal slicing | A batch of tests landed before any implementation. |
 
-Mocks are for system boundaries only: external APIs, time, randomness, sometimes the filesystem or the database. Not your own modules.
+Mocks are for system boundaries only: external APIs, time, randomness, sometimes the filesystem or the database. Not your own capsules.
 
 ## Common questions
 
@@ -66,7 +66,7 @@ Usually not, and the skill will not stop it. A user reported the agent writing a
 
 No. `/tdd` documents the methodology; `/implement` is a very simple work→feedback→commit loop and is the direct stand-in for `/do-work`. The course's single `/do-work` step is now split across `/implement`, `/tdd` and `/code-review`. If you are asking which one to run against a ticket, the answer is almost always `/implement`.
 
-**Where did the deep-modules and interface-design guidance go?**
+**Where did the deep-capsules and interface-design guidance go?**
 
 Into [codebase-design](https://aihero.dev/skills-codebase-design) in v1.0, generalised so several skills share one vocabulary. `refactoring.md` left at the same time; refactoring is now [code-review](https://aihero.dev/skills-code-review)'s job, and that skill carries the Fowler smell baseline.
 
@@ -81,7 +81,7 @@ No. Run against one ticket, it will happily propose work that belongs to a sibli
 - Test names read as capabilities ("user can checkout with valid cart"), not as internals ("checkout calls paymentService.process").
 - Expected values in assertions are literals you can trace to the spec, not values recomputed the way the code computes them.
 - Renaming an internal function breaks nothing in the suite.
-- Mocks appear only at external boundaries (the payment API, the clock) and never around your own modules.
+- Mocks appear only at external boundaries (the payment API, the clock) and never around your own capsules.
 
 ## Where it fits
 
@@ -91,4 +91,4 @@ No. Run against one ticket, it will happily propose work that belongs to a sibli
 grill-with-docs → to-spec → to-tickets → implement → code-review
 ```
 
-[to-spec](https://aihero.dev/skills-to-spec) agrees the test seams up front, [implement](https://aihero.dev/skills-implement) drives `tdd` per ticket, and [code-review](https://aihero.dev/skills-code-review) checks afterwards that only the agreed seams were used, and owns the refactoring `tdd` no longer does. Its other neighbour is [codebase-design](https://aihero.dev/skills-codebase-design), the shared source of the seam and deep-module vocabulary `tdd` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full spec in play. When you are unsure which skill fits your situation, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
+[to-spec](https://aihero.dev/skills-to-spec) agrees the test seams up front, [implement](https://aihero.dev/skills-implement) drives `tdd` per ticket, and [code-review](https://aihero.dev/skills-code-review) checks afterwards that only the agreed seams were used, and owns the refactoring `tdd` no longer does. Its other neighbour is [codebase-design](https://aihero.dev/skills-codebase-design), the shared source of the seam and deep-capsule vocabulary `tdd` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full spec in play. When you are unsure which skill fits your situation, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
