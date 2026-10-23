@@ -5,7 +5,7 @@ argument-hint: "What will the next session be used for?"
 disable-model-invocation: true
 ---
 
-Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save it as `archive/HANDOFF-YYYY-MM-DD-<short-topic>.md` under the workspace root, using today's date and creating `archive/` if needed; never overwrite an existing file. Title it `# Handoff YYYY-MM-DD: <title>` with a `**Date:** YYYY-MM-DD` line beneath. If `archive/` already holds handoffs, reference the newest one from the new document. If a `HANDOFF.md` from an older session sits at the workspace root, first move it into `archive/` under the same naming scheme, dated from its contents (or its modification time if it has none).
+Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save it as `HANDOFF.md` at the workspace root. If a `HANDOFF.md` from an older session already sits there, first move it to `archive/HANDOFF-YYYY-MM-DD-<short-topic>.md` under the workspace root, dated from its contents (or its modification time if it has none), creating `archive/` if needed and never overwriting an existing archived file. Title the new document `# Handoff YYYY-MM-DD: <title>` with a `**Date:** YYYY-MM-DD` line beneath, using today's date. If `archive/` holds handoffs, reference the newest one from the new document.
 
 Choose the format and sections yourself, based on the style and context of the session - lead with what matters most for the next agent (e.g. a pivot, a decision, a blocker).
 
